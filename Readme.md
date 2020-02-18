@@ -1,8 +1,9 @@
 # What do we want to be able to do?
 
 * Run a basic nextflow script
-* Run an R script
+* Run an Rscript (within Nextflow)
 * Run the R script in parallel so that each one receives a different input argument
+* Run an R script (by calling a file)
 * Run the process which calls the R script using a docker image
 * Push our script to github and run it from our github repos
 
@@ -65,6 +66,53 @@ It's splitting it's input into chunks of 6 bytes... then outputting them as sepe
 
 If you then connect to the server with SMB (smb://rds.imperial.ac.uk/rds/user/nskene/home) then you can click report.html to see how the run went
 
+# Run an R script in parallel by submitting jobs with PBS
+
+Here's a typical template... inside the base directory where NF is run.. create a "bin" folder and put R scripts in there and run "chmod +x" on each of them... e.g. try to save this R script as save_dataset.R in the /bin/ folder: -
+
+```
+#!/usr/bin/env Rscript
+args = commandArgs(trailingOnly=TRUE)
+if (length(args) == 0) {
+  stop("No dataset was specified.")
+} else {
+    dataset <- args[1]
+}
+sprintf("Loading dataset: %s", dataset)
+do.call(data, list(x = eval(dataset)))
+write.table(
+    dataset, 
+    file = paste0(dataset, ".tsv"), 
+    sep = "\t", 
+    col.names = TRUE, row.names = FALSE)
+```
+
+then run chmod +x save_dataset.R  on it
+
+then the tutorial.nf becomes: -
+
+```
+#!/usr/bin/env nextflow
+params.datasets = ['iris', 'mtcars']
+process writeDataset {
+    module 'R/3.4.0'
+    executor = 'pbspro'
+    clusterOptions = '-lselect=1:ncpus=1:mem=1Gb -l walltime=24:00:00 -V'
+    tag "${dataset}"
+    publishDir "$baseDir/data/", mode: 'copy', overwrite: false, pattern: "*.tsv"
+    input:
+    each dataset from params.datasets
+    output:
+    file '*.tsv' into datasets_ch
+    """
+    save_dataset.R ${dataset}
+    """
+}
+```
+
+The script runs the R script and also passes it a parameter from NF
+
+For larger/more complex R scripts with multiple parameters, it's better to use the argparse package in R
 
 # Run the process which calls the R script using a Docker / Singularity image
 
