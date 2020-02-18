@@ -64,3 +64,31 @@ It's splitting it's input into chunks of 6 bytes... then outputting them as sepe
 ```
 
 If you then connect to the server with SMB (smb://rds.imperial.ac.uk/rds/user/nskene/home) then you can click report.html to see how the run went
+
+
+# Run the process which calls the R script using a Docker / Singularity image
+
+The simplest way to do this is to tell it to use a docker hub image when you call the nextflow code, using an argument, i.e.
+
+```
+nextflow run test.nf -with-singularity "continuumio/miniconda"
+```
+
+Note that this pulls a docker image and converts it directly to a singularity image.
+
+
+Alternatively,  create a file named ```nextflow.config``` in the current directory with:
+
+```
+process.container = 'continuumio/miniconda3' # the name of the image
+singularity.enabled = true
+singularity.cacheDir = 'work/singularity' #path to save the singularity images. can be changed to a shared folder
+```
+
+If you have access to the neurogenomics-lab shared workspace, then keep your images there so others can access them:
+
+```
+process.container = 'continuumio/miniconda3' # the name of the image
+singularity.enabled = true
+singularity.cacheDir = '~/projects/neurogenomics-lab' #path to save the singularity images. can be changed to a shared folder
+```
