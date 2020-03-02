@@ -6,6 +6,8 @@
 * Run an R script (by calling a file)
 * Run the process which calls the R script using a docker image
 * Push our script to github and run it from our github repos
+* Run an R function (using a JSON file to define inputs)
+* Run an R function (passing a channel as inputs... which Nurun said is different to just passing arguments)
 
 # Intro pages about NextFlow
 
