@@ -8,6 +8,7 @@
 * Push our script to github and run it from our github repos
 * Run an R function (using a JSON file to define inputs)
 * Run an R function (passing a channel as inputs... which Nurun said is different to just passing arguments)
+* Use renv with singularity to avoid having to create a singularity image containing all R dependencies
 
 # Intro pages about NextFlow
 
