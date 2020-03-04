@@ -20,9 +20,9 @@ Start of doing the Quickstart: https://www.nextflow.io/
 
 Try running the first script from here: https://www.nextflow.io/docs/latest/getstarted.html#your-first-script
 
-If you try running these on the HPC you will get an error. This is because by default it tries submitting the jobs to the HPC.
+If you try running these on the HPC you will get an error. This is because by default it tries submitting the jobs to the HPC: tell it to use the local executor.
 
-So tell it to use the local executor:
+Create this file as tutorial.nf:
 
 ```
 #!/usr/bin/env nextflow
