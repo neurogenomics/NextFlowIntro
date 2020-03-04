@@ -3,6 +3,7 @@
 * Run a basic nextflow script
 * Run an Rscript (within Nextflow)
 * Run the R script in parallel so that each one receives a different input argument
+* Use NF-Tower with that R script 
 * Run an R script (by calling a file)
 * Run the process which calls the R script using a docker image
 * Demonstrate that the R script really is running in the docker image by using an image without R
