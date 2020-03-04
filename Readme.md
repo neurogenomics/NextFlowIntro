@@ -9,6 +9,7 @@
 * Run an R function (using a JSON file to define inputs)
 * Run an R function (passing a channel as inputs... which Nurun said is different to just passing arguments)
 * Use renv with singularity to avoid having to create a singularity image containing all R dependencies
+* Creating the above script within an nf-core template.... and explain why you would do this
 
 # Intro pages about NextFlow
 
