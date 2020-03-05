@@ -77,7 +77,8 @@ It's splitting it's input into chunks of 6 bytes... then outputting them as sepe
 <details>
     <summary>
         Click to expand
-    </summary>
+    </summary><br>
+    
 ```
 /nextflow run ./tutorial.nf -with-report -with-timeline -with-dag flowchart.png
 
