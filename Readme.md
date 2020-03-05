@@ -13,12 +13,20 @@
 * Use renv with singularity to avoid having to create a singularity image containing all R dependencies
 * Creating the above script within an nf-core template.... and explain why you would do this
 
-# Intro pages about NextFlow
+<details>
+    <summary>
+        # Intro pages about NextFlow
+    </summary><br>
 
-Start of doing the Quickstart: https://www.nextflow.io/
+    Start of doing the Quickstart: https://www.nextflow.io/
+</details>
 
+
+<details>
+    <summary>
 # Write a basic nextflow script
-
+    </summary><br>
+    
 Try running the first script from here: https://www.nextflow.io/docs/latest/getstarted.html#your-first-script
 
 If you try running these on the HPC you will get an error. This is because by default it tries submitting the jobs to the HPC: tell it to use the local executor.
@@ -62,18 +70,24 @@ The first function prints out the content of params.str and pipes this to the un
 The split function is explained here (http://www.theunixschool.com/2012/10/10-examples-of-split-command-in-unix.html)
 
 It's splitting it's input into chunks of 6 bytes... then outputting them as seperate files. 
+</details>
 
+<details>
+    <summary>
 # Running the simple script so that it produces reports
-
+    </summary>
 ```
 /nextflow run ./tutorial.nf -with-report -with-timeline -with-dag flowchart.png
 
 ```
 
 If you then connect to the server with SMB (smb://rds.imperial.ac.uk/rds/user/nskene/home) then you can click report.html to see how the run went
+</details>
 
+<details>
+    <summary>
 # Run an R script in parallel by submitting jobs with PBS
-
+    </summary>
 Here's a typical template... inside the base directory where NF is run.. create a "bin" folder and put R scripts in there and run "chmod +x" on each of them... e.g. try to save this R script as save_dataset.R in the /bin/ folder: -
 
 ```
@@ -119,9 +133,12 @@ process writeDataset {
 The script runs the R script and also passes it a parameter from NF
 
 For larger/more complex R scripts with multiple parameters, it's better to use the argparse package in R
+</details>
 
+<details>
+    <summary>
 # Run the process which calls the R script using a Docker / Singularity image
-
+    </summary>
 The simplest way to do this is to tell it to use a docker hub image when you call the nextflow code, using an argument, i.e.
 
 ```
@@ -146,3 +163,4 @@ process.container = 'continuumio/miniconda3' # the name of the image
 singularity.enabled = true
 singularity.cacheDir = '~/projects/neurogenomics-lab' #path to save the singularity images. can be changed to a shared folder
 ```
+</details>
