@@ -13,18 +13,19 @@
 * Use renv with singularity to avoid having to create a singularity image containing all R dependencies
 * Creating the above script within an nf-core template.... and explain why you would do this
 
+# Intro pages about NextFlow
 <details>
     <summary>
-        <h1>Intro pages about NextFlow</h1>
-    </summary>
+        Click to expand
+    </summary><br>
 
     Start of doing the Quickstart: https://www.nextflow.io/
 </details>
 
-
+# Write a basic nextflow script
 <details>
     <summary>
-# Write a basic nextflow script
+        Click to expand
     </summary><br>
     
 Try running the first script from here: https://www.nextflow.io/docs/latest/getstarted.html#your-first-script
@@ -84,10 +85,11 @@ It's splitting it's input into chunks of 6 bytes... then outputting them as sepe
 If you then connect to the server with SMB (smb://rds.imperial.ac.uk/rds/user/nskene/home) then you can click report.html to see how the run went
 </details>
 
+# Run an R script in parallel by submitting jobs with PBS
 <details>
     <summary>
-# Run an R script in parallel by submitting jobs with PBS
-    </summary>
+        Click to expand
+    </summary><br>
 Here's a typical template... inside the base directory where NF is run.. create a "bin" folder and put R scripts in there and run "chmod +x" on each of them... e.g. try to save this R script as save_dataset.R in the /bin/ folder: -
 
 ```
@@ -135,10 +137,11 @@ The script runs the R script and also passes it a parameter from NF
 For larger/more complex R scripts with multiple parameters, it's better to use the argparse package in R
 </details>
 
+# Run the process which calls the R script using a Docker / Singularity image
 <details>
     <summary>
-# Run the process which calls the R script using a Docker / Singularity image
-    </summary>
+        Click to expand
+    </summary><br>
 The simplest way to do this is to tell it to use a docker hub image when you call the nextflow code, using an argument, i.e.
 
 ```
