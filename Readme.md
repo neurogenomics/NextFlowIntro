@@ -16,7 +16,7 @@
 <details>
     <summary>
         <h1>Intro pages about NextFlow</h1>
-    </summary><br>
+    </summary>
 
     Start of doing the Quickstart: https://www.nextflow.io/
 </details>
