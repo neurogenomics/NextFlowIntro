@@ -3,7 +3,8 @@
 * Run a basic nextflow script
 * Run an Rscript (within Nextflow)
 * Run the R script in parallel so that each one receives a different input argument
-* Use NF-Tower with that R script 
+* Use NF-Tower so that it produces reports on job progress
+- Use nextflow.config to add these commands so they run by default
 * Run an R script (by calling a file)
 * Run the process which calls the R script using a docker image
 * Demonstrate that the R script really is running in the docker image by using an image without R
@@ -73,7 +74,7 @@ The split function is explained here (http://www.theunixschool.com/2012/10/10-ex
 It's splitting it's input into chunks of 6 bytes... then outputting them as seperate files. 
 </details>
 
-# Running the simple script so that it produces reports
+# Running the simple script so that it produces reports on job progress
 <details>
     <summary>
         Click to expand
