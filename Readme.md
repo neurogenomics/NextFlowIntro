@@ -14,13 +14,19 @@
 * Use renv with singularity to avoid having to create a singularity image containing all R dependencies
 * Creating the above script within an nf-core template.... and explain why you would do this
 
-# Intro pages about NextFlow
+# Getting started
 <details>
     <summary>
         Click to expand
     </summary><br>
 
-    Start of doing the Quickstart: https://www.nextflow.io/
+   To run nextflow on the Imperial cluster you will need to type
+   
+   ```
+   module load java
+   ```
+
+   Then do the Quickstart: https://www.nextflow.io/
 </details>
 
 # Write a basic nextflow script
@@ -94,7 +100,7 @@ If you then connect to the server with SMB (smb://rds.imperial.ac.uk/rds/user/ns
         Click to expand
     </summary><br>
 
-## Create the R script
+### Create the R script
     
 Here's a typical template... inside the base directory where NF is run.. create a "bin" folder and put R scripts in there and run "chmod +x" on each of them... e.g. try to save this R script as save_dataset.R in the /bin/ folder: -
 
@@ -119,7 +125,7 @@ then run chmod +x save_dataset.R  on it
 
 The script takes a string argument, i.e. 'iris' through the command line. It then loads that dataset and writes it to a file (if dataset='iris', then it saves the dataset as 'iris.tsv').
 
-## Create the nextflow script which calls the R script
+### Create the nextflow script which calls the R script
 
 Edit tutorial.nf so it contains: -
 
@@ -146,6 +152,12 @@ The script runs the R script and also passes it a parameter from NF
 
 For larger/more complex R scripts with multiple parameters, it's better to use the argparse package in R
 </details>
+
+### Run the nextflow command
+
+```
+./nextflow run ./tutorial.nf -with-report -with-timeline -with-dag flowchart.png
+```
 
 # Run the process which calls the R script using a Docker / Singularity image
 <details>
