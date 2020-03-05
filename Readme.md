@@ -73,9 +73,10 @@ The split function is explained here (http://www.theunixschool.com/2012/10/10-ex
 It's splitting it's input into chunks of 6 bytes... then outputting them as seperate files. 
 </details>
 
+# Running the simple script so that it produces reports
 <details>
     <summary>
-# Running the simple script so that it produces reports
+        Click to expand
     </summary>
 ```
 /nextflow run ./tutorial.nf -with-report -with-timeline -with-dag flowchart.png
