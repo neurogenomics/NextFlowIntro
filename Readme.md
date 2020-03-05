@@ -92,6 +92,9 @@ If you then connect to the server with SMB (smb://rds.imperial.ac.uk/rds/user/ns
     <summary>
         Click to expand
     </summary><br>
+
+## Create the R script
+    
 Here's a typical template... inside the base directory where NF is run.. create a "bin" folder and put R scripts in there and run "chmod +x" on each of them... e.g. try to save this R script as save_dataset.R in the /bin/ folder: -
 
 ```
@@ -113,7 +116,11 @@ write.table(
 
 then run chmod +x save_dataset.R  on it
 
-then the tutorial.nf becomes: -
+The script takes a string argument, i.e. 'iris' through the command line. It then loads that dataset and writes it to a file (if dataset='iris', then it saves the dataset as 'iris.tsv').
+
+## Create the nextflow script which calls the R script
+
+Edit tutorial.nf so it contains: -
 
 ```
 #!/usr/bin/env nextflow
